@@ -3,10 +3,11 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import { Redirect, Route, Switch, BrowserRouter } from 'react-router-dom'
-import AdminLogin from './AdminLogin';
+import AdminLogin from '../Layout/AdminLogin';
 
 const styles = {
   root: {
@@ -42,14 +43,17 @@ class Navigation extends React.Component {
           <Typography variant="h6" color="inherit" className={classes.grow}>
              Chat Application 
           </Typography>
-          <Button color="inherit" onClick={this.renderRedirect}>Admin Login</Button>
+          <BrowserRouter>
+            <Link to="/adminlogin">
+              <Button color="inherit">Admin Login</Button>
+            </Link>     
+            <Switch>
+                <Route path="/adminlogin" component={AdminLogin} />
+           </Switch>
+      </BrowserRouter>  
         </Toolbar>
       </AppBar>
-      <BrowserRouter>
-      <Switch>
-        <Route path="/adminlogin" component={AdminLogin} />
-      </Switch>
-      </BrowserRouter>
+      
     </div>
   );
 }

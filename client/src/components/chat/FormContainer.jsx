@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
-import './Styles.css'
+import '../../styles/Styles.css'
 import { Input } from '@material-ui/core';
 
 const styles = {
@@ -34,11 +34,10 @@ class FormContainer extends Component {
                             <br/>         
                             <div class="card">
                                 <div id="messages" class="card-block">
-                                <br/>
                             </div>
-                            <br/>
-                            <textarea id="textarea" class="form-control"  placeholder="Enter message"></textarea>
                         </div>
+                        <br/>
+                        <textarea id="textarea" class="form-control"  placeholder="Enter message"></textarea>
                     </div>
                 </div>
             </div>
