@@ -13,7 +13,9 @@ import {
      Button
     } from '@material-ui/core';
 import { PropTypes } from 'prop-types';
+import API from '../Lists/api';
 
+// Declare the styling for the form
 const styles = (theme) => ({
     card: {
         width: 'auto',
@@ -47,23 +49,38 @@ const styles = (theme) => ({
 
 class AdminLogin extends React.Component {
 
+    // State for the username and password
     state = { 
         username: '',
         password: '',
+        users: [],
      }
+
+     // Handle the username
 
      handleInput = (e) => {
         this.setState({ username: e.target.value })
      }
 
+     // Handle the password
      handlePassword =(e) => {
         this.setState({ password: e.target.value })
      }
 
+     // When the user Submit the form
      handleSubmit = (e) => {
          e.preventDefault();
-         console.log(this.state.username)
-         console.log(this.state.password)
+
+            // Take all the data in the form
+             let username = this.state.username
+             let password = this.state.password
+
+        // Use Axios to post to the server and retrieve the data
+         API.post(`/admin/login/${username}&${password}`).then( res => {
+            this.setState({ users:res.data })
+            //console.log(this.state.users)
+            this.props.history.push('/events')
+         })
      }
 
     render() { 

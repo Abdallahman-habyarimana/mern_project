@@ -6,6 +6,7 @@ import Events from '../Lists/Events';
 
 import FormContainer from '../chat/FormContainer';
 import { Button, List, ListItem } from '@material-ui/core';
+import AdminLogin from '../Layout/AdminLogin';
 
 
 class Main extends Component {
@@ -29,6 +30,9 @@ class Main extends Component {
                             <ListItem class="nav-item">
                                 <Link class="nav-link" to="/formcontainer">Chat</Link>
                             </ListItem>
+                            <ListItem class="nav-item">
+                                <Link class="nav-link" to="/adminlogin">Admin Login</Link>
+                            </ListItem>
                         </List>
                     </div>
                     <select> 
@@ -41,6 +45,7 @@ class Main extends Component {
                         <Route exact path="/" component={ChatHistory} />
                         <Route path="/events" component={Events} />
                         <Route path="/formcontainer" component={FormContainer} />
+                        <Route path="/adminlogin" component={AdminLogin}/>
                     </Switch>
                 </div>
             </BrowserRouter> 

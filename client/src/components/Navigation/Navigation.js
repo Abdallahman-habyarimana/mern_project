@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-import Link from '@material-ui/core/Link'
+//import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import { Redirect, Route, Switch, BrowserRouter } from 'react-router-dom'
-import AdminLogin from '../Layout/AdminLogin';
+//import Button from '@material-ui/core/Button';
+//import { Redirect, Route, Router /* Switch, BrowserRouter*/ } from 'react-router-dom'
+import { Button } from '@material-ui/core';
+//import AdminLogin from '../Layout/AdminLogin';
 
 const styles = {
   root: {
@@ -19,23 +20,15 @@ const styles = {
 };
 
 class Navigation extends React.Component {
-
   state = {
-    redirect: false
+    redirect:false,
   }
-  setRedirect = () => {
-    this.setState({
-      redirect: true
-    })
-  }
-  renderRedirect = () => {
-    if (this.state.redirect) {
-      return <Redirect to='/adminlogin' />
-    }
-  }
-    render(){
-      const {classes} = this.props
-     
+
+  handleClick = () => {
+   this.props.history.push("/adminlogin")
+   }
+  render(){
+  const {classes} = this.props
   return ( 
     <div className={classes.root}>
       <AppBar position="static">
@@ -43,17 +36,10 @@ class Navigation extends React.Component {
           <Typography variant="h6" color="inherit" className={classes.grow}>
              Chat Application 
           </Typography>
-          <BrowserRouter>
-            <Link to="/adminlogin">
-              <Button color="inherit">Admin Login</Button>
-            </Link>     
-            <Switch>
-                <Route path="/adminlogin" component={AdminLogin} />
-           </Switch>
-      </BrowserRouter>  
+              <Button type="button" onClick={this.handleClick}>Admin Login</Button>       
         </Toolbar>
       </AppBar>
-      
+    
     </div>
   );
 }

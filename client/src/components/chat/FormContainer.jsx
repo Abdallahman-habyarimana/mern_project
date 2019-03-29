@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
+//import { withStyles } from '@material-ui/core/styles';
+//import PropTypes from 'prop-types';
 import '../../styles/Styles.css'
 import { Input } from '@material-ui/core';
 
-const styles = {
+/*const styles = {
     root: {
       flexGrow: 1,
     },
@@ -15,7 +15,7 @@ const styles = {
         maxWidth: 300
     }
   };
-  
+  */
 class FormContainer extends Component {
     state = {  }
     render() { 
@@ -45,9 +45,10 @@ class FormContainer extends Component {
     );
     }
 }
-
+/*
 FormContainer.propTypes = {
     classes: PropTypes.object.isRequired
 }
+*/
  
-export default withStyles(styles)(FormContainer);
+export default FormContainer;
