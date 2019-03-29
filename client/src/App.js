@@ -1,8 +1,13 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation/Navigation';
+import { Switch, BrowserRouter, Link, Route } from 'react-router-dom';
+import ChatHistory from './components/Lists/ChatHistory';
+import Events from "./components/Lists/Events";
+import AdminLogin from './components/Layout/AdminLogin';
+import ChatContent from './components/chat/ChatContent';
+
 //import Main from './components/Navigation/Main';
 //import Footer from './components/Layout/Footer' 
-import FormContainer from './components/chat/FormContainer';
 
 
 // Render the header
@@ -10,10 +15,15 @@ import FormContainer from './components/chat/FormContainer';
 class App extends Component {
   render() {
     return (
-      <div>
+      <BrowserRouter>
         <Navigation />
-        <FormContainer />
-      </div>
+        <Switch>
+            <Route exact path="/" component={ChatContent} />
+            <Route path="/events" component={Events} />
+            <Route path="/history" component={ChatHistory} />
+            <Route path="/adminlogin" component={AdminLogin}/>
+        </Switch>
+      </BrowserRouter>
       
       );
   }

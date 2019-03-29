@@ -21,23 +21,23 @@ class FormContainer extends Component {
     render() { 
        // const { classes } = this.props
         return ( 
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 offset-md-3 col-sm-12">
-                        <h5 class="text-left">
+            <div className="container">
+                <div className="row">
+                    <div className="col-md-6 offset-md-3 col-sm-12">
+                        <h5 className="text-left">
                             chat Application
                         </h5>
                     
                         <div id="status"></div>
                         <div id="chat">
-                            <Input type="text" id="username" class="form-control" placeholder="Enter your name...." />
+                            <Input type="text" id="username" className="form-control" placeholder="Enter your name...." />
                             <br/>         
-                            <div class="card">
-                                <div id="messages" class="card-block">
+                            <div className="card">
+                                <div id="messages" className="card-block">
                             </div>
                         </div>
                         <br/>
-                        <textarea id="textarea" class="form-control"  placeholder="Enter message"></textarea>
+                        <textarea id="textarea" className="form-control"  placeholder="Enter message"></textarea>
                     </div>
                 </div>
             </div>

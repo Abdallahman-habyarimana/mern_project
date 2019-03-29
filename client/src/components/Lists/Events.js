@@ -8,6 +8,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import TablePagination from '@material-ui/core/TablePagination'
+import TableSortTable from '@material-ui/core/TableSortLabel'
 
 const styles = theme => ({
     root: {
@@ -22,7 +24,33 @@ const styles = theme => ({
       minWidth: 700,
     },
   });
+
+//   /* SORTING THE TABLE */
+//   function desc(a, b, orderBy) {
+//     if (b[orderBy] < a[orderBy]) {
+//       return -1;
+//     }
+//     if (b[orderBy] > a[orderBy]) {
+//       return 1;
+//     }
+//     return 0;
+//   }
   
+//   function stableSort(array, cmp){
+//       const stabilizedThis = array.map((el,index) => [el,index]);
+//       stabilizedThis.sort((a,b)=>{
+//           const order = cmp(a[0],b[0]);
+//           if(order !==0) return order;
+//           return a[1] - b[1];
+//       })
+//       return stabilizedThis.map(el => el[0]);
+//   }
+
+//   function getSorting(order, orderBy) {
+//     return order === 'desc' ? (a, b) => desc(a, b, orderBy) : (a, b) => -desc(a, b, orderBy);
+//   }
+
+
 class Events extends Component {
     state = { 
         chat: []
@@ -38,14 +66,19 @@ class Events extends Component {
         console.log( this.state.chat )
      }
 
+     createSortHandler = property => event => {
+        this.props.onRequestSort(event, property);
+      };
     render() { 
         const { classes } = this.props
+        const { onSelectAllClick, order, orderBy, numSelected, rowCount } = this.props;
+
         return ( 
         <Paper className={classes.root}>
             <Table className={classes.table}>
                 <TableHead>
                     <TableRow>
-                        <TableCell align="right">Type</TableCell>
+                        <TableCell align="right" >Type</TableCell>
                         <TableCell align="right">Date</TableCell>
                         <TableCell align="right"> Time</TableCell>
                         <TableCell align="right">PPID</TableCell>
@@ -57,8 +90,8 @@ class Events extends Component {
                         <TableCell component="th" scope="row">
                             {row.type}
                         </TableCell>
-                        <TableCell align="right">{row.date}</TableCell>
-                        <TableCell align="right">{row.time}</TableCell>
+                        <TableCell align="right">{new Date(row.date).toLocaleDateString("en-US")}</TableCell>
+                        <TableCell align="right">{new Date(row.time).toLocaleTimeString("en-US")}</TableCell>
                         <TableCell align="right">{row.ppid}</TableCell>
                     </TableRow>
                 ))}

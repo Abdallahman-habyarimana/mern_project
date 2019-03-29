@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
-//import Link from '@material-ui/core/Link'
+import Link from '@material-ui/core/Link'
 import Typography from '@material-ui/core/Typography';
 //import Button from '@material-ui/core/Button';
 //import { Redirect, Route, Router /* Switch, BrowserRouter*/ } from 'react-router-dom'
 import { Button } from '@material-ui/core';
 //import AdminLogin from '../Layout/AdminLogin';
+import { withRouter } from 'react-router-dom'
 
 const styles = {
   root: {
@@ -34,9 +35,9 @@ class Navigation extends React.Component {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" color="inherit" className={classes.grow}>
-             Chat Application 
+             <Link to="/"  className="brand-logo">Chat Application </Link>
           </Typography>
-              <Button type="button" onClick={this.handleClick}>Admin Login</Button>       
+              <Button type="button" onClick={()=> this.props.history.push("/adminlogin")} className="btn btn-primary btn-sm primary">Admin Login</Button>       
         </Toolbar>
       </AppBar>
     
@@ -48,5 +49,7 @@ class Navigation extends React.Component {
 Navigation.propTypes = {
     classes: PropTypes.object.isRequired
 }
- 
+
+Navigation = withRouter(Navigation)
+
 export default withStyles(styles)(Navigation);
