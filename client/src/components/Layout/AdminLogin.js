@@ -1,4 +1,6 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
+
 import {
      Card,
      CardContent,
@@ -93,17 +95,17 @@ class AdminLogin extends React.Component {
             </Typography> 
             <form className={classes.form}>
                 <CardContent>
-                    <FormControl margin="normal" required fullWidth>
+                    <FormControl margin="normal" fullWidth>
                         <InputLabel htmlFor="email"> email </InputLabel>
                         <Input name="email" autoComplete="email" onKeyUp={this.handleInput}/>
                         <Icon color="primary">email</Icon>
                     </FormControl>
-                    <FormControl margin="normal" required fullWidth>
+                    <FormControl margin="normal" fullWidth>
                         <InputLabel htmlFor="password"> Password </InputLabel>
                         <Input name="password" type="password" onKeyUp={this.handlePassword}/>
                     </FormControl>  
                 </CardContent>
-                <Button type="submit" fullWidth variant="contained" color="primary"
+                <Button type="submit" fullWidth color="inherit"
                     className={classes.submit} onClick={this.handleSubmit}>Login</Button>
                 <CardActions>
                 </CardActions>
@@ -117,5 +119,7 @@ class AdminLogin extends React.Component {
 AdminLogin.propTypes = {
     classes: PropTypes.object.isRequired,
 };
+
+AdminLogin = withRouter(AdminLogin)
  
 export default withStyles(styles)(AdminLogin);

@@ -8,8 +8,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-import TablePagination from '@material-ui/core/TablePagination'
-import TableSortTable from '@material-ui/core/TableSortLabel'
+//import TablePagination from '@material-ui/core/TablePagination'
+//import TableSortTable from '@material-ui/core/TableSortLabel'
 
 const styles = theme => ({
     root: {
@@ -71,7 +71,7 @@ class Events extends Component {
       };
     render() { 
         const { classes } = this.props
-        const { onSelectAllClick, order, orderBy, numSelected, rowCount } = this.props;
+        // const { onSelectAllClick, order, orderBy, numSelected, rowCount } = this.props;
 
         return ( 
         <Paper className={classes.root}>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Navigation from './components/Navigation/Navigation';
-import { Switch, BrowserRouter, Link, Route } from 'react-router-dom';
+import { Switch, BrowserRouter, Route } from 'react-router-dom';
 import ChatHistory from './components/Lists/ChatHistory';
 import Events from "./components/Lists/Events";
 import AdminLogin from './components/Layout/AdminLogin';
