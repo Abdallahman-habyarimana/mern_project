@@ -24,8 +24,8 @@ const styles = theme => ({
       minWidth: 700,
     },
   });
+class Test extends Component{
 
-class Events extends Component {
     state = { 
         chat: []
      }
@@ -75,10 +75,5 @@ class Events extends Component {
   );}
 }
 
-Events.propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
  
- 
-
-export default withStyles(styles)(Events);
+export default Test;

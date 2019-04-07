@@ -81,7 +81,7 @@ class AdminLogin extends React.Component {
          API.post(`/admin/login/${username}&${password}`).then( res => {
             this.setState({ users:res.data })
             //console.log(this.state.users)
-            this.props.history.push('/events')
+            this.props.history.push('/adminHomepage')
          })
      }
 

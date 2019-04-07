@@ -6,6 +6,7 @@ import Events from "./components/Lists/Events";
 import AdminLogin from './components/Layout/AdminLogin';
 import ChatContent from './components/chat/ChatContent';
 import Pagination from './components/helper/Pagination';
+import AdminHomepage from './components/Layout/AdminHomepage'
 
 //import Main from './components/Navigation/Main';
 //import Footer from './components/Layout/Footer' 
@@ -24,7 +25,8 @@ class App extends Component {
             <Route path="/history" component={ChatHistory} />
             <Route path="/adminlogin" component={AdminLogin}/>       
             <Route path="/pagination" component={Pagination}/>
-
+            <Route path="/adminHomepage" component={AdminHomepage}/>
+            
         </Switch>
       </BrowserRouter>
       
