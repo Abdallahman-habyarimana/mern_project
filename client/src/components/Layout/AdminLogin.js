@@ -10,7 +10,6 @@ import {
      CssBaseline,
      FormControl, 
      Input,
-     Icon,
      InputLabel, 
      Button
     } from '@material-ui/core';
@@ -98,7 +97,6 @@ class AdminLogin extends React.Component {
                     <FormControl margin="normal" fullWidth>
                         <InputLabel htmlFor="email"> email </InputLabel>
                         <Input name="email" autoComplete="email" onKeyUp={this.handleInput}/>
-                        <Icon color="primary">email</Icon>
                     </FormControl>
                     <FormControl margin="normal" fullWidth>
                         <InputLabel htmlFor="password"> Password </InputLabel>

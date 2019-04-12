@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import API from './api'
-import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+ import PropTypes from 'prop-types';
+ import { withStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -24,7 +24,7 @@ const styles = theme => ({
       minWidth: 700,
     },
   });
-class Test extends Component{
+class Rooms extends Component{
 
     state = { 
         chat: []
@@ -75,5 +75,8 @@ class Test extends Component{
   );}
 }
 
+Rooms.propTypes = {
+    classes: PropTypes.object.isRequired,
+    };
  
-export default Test;
+export default withStyles(styles)(Rooms);

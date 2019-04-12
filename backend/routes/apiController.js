@@ -4,7 +4,8 @@ var router = express.Router();
 // declare variable for clients 
 var { ChatRoom } = require('../model/ChatRoom');
 var { Events } = require('../model/Events');
-var { RoomHistory } = require('../model/RoomHistory')
+//var { RoomHistory } = require('../model/RoomHistory')
+var { Rooms } = require('../model/Rooms')
 var { Admin } = require('../model/Admin')
 
 // get all chat history lcohost:300/api/histor
@@ -48,6 +49,20 @@ router.post('/admin', (req, res) => {
         .then(user => res.status(200).json(admin))
         .catch(err => res.status(400).json({ error: err })) 
       })
+
+
+router.post('/admin/add/room', (req, res) => {
+    let { room, status } = req.body
+
+    var rooms = new Rooms({
+        room:room,
+        date_created: Date.now(),
+        status:status
+    })
+    rooms.save()
+    .then(rom => res.status(200).json(rom))
+    .catch(err => res.status(400).json({ error: err })) 
+})
 
 router.post('/admin/login/:name&:pass', (req, res) => {
     Admin.where('username').equals(req.params.name).where('password').equals(req.params.pass).exec((err, doc)=> {
