@@ -8,6 +8,7 @@ import Typography from '@material-ui/core/Typography';
 
 // import Test from '../Lists/test'
 import  Events  from '../Lists/Events'
+import  Rooms  from '../Lists/Rooms'
 import ChatHistory  from '../Lists/ChatHistory'
 
 function TabContainer(props) {
@@ -47,12 +48,12 @@ class AdminHomepage extends Component {
         <Tabs value={value} onChange={this.handleChange}>
           <Tab label="Events" />
           <Tab label="Chat History" />
-          <Tab label="Item Three" />
+          <Tab label="Rooms" />
         </Tabs>
       </AppBar>
       {value === 0 && <TabContainer><Events/></TabContainer>}
       {value === 1 && <TabContainer><ChatHistory/></TabContainer>}
-      {value === 2 && <TabContainer>Item Three</TabContainer>}
+      {value === 2 && <TabContainer><Rooms /></TabContainer>}
     </div>
   );
 }
