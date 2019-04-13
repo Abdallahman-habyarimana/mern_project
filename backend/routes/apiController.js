@@ -17,6 +17,16 @@ router.get('/history', (req, res) => {
     })
 })
 
+// get all all room lcohost:300/api/histor
+router.get('/get/all/room', (req, res) => {
+    Rooms.find((err, docs) => {
+        if (!err) { res.send(docs);}
+        else { console.log('Error in Retrieving:' + JSON.stringify(err, undefined, 2));
+    }
+    })
+})
+
+
 // get all Event
 router.get('/eventlog', (req, res) => {
     Events.find((err, docs) => {
@@ -33,9 +43,6 @@ router.get('/roomhistory/:room', (req, res) => {
     })
 })
 
-router.post('/admin/login', (req, res) => {
-
-})
 
 router.post('/admin', (req, res) => {
     let { username, password} = req.body
@@ -57,10 +64,11 @@ router.post('/admin/add/room', (req, res) => {
     var rooms = new Rooms({
         room:room,
         date_created: Date.now(),
+        edit_date: null,
         status:status
     })
     rooms.save()
-    .then(rom => res.status(200).json(rom))
+    .then(rom => res.send(rom))
     .catch(err => res.status(400).json({ error: err })) 
 })
 
