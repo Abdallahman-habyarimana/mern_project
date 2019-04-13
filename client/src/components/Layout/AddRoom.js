@@ -10,14 +10,16 @@ import {
      Select,
      MenuItem,
      FilledInput,
-     InputLabel, 
+     InputLabel,
+     CardActionArea,
+     Button, 
     } from '@material-ui/core';
 import { PropTypes } from 'prop-types';
+import API from '../Lists/api';
 
 const styles = (theme) => ({
     card: {
         width: 'auto',
-        maxWidth: 550,
         marginLeft: theme.spacing.unit * 3,
         marginRight: theme.spacing.unit * 3,
         marginTop: theme.spacing.unit * 5,
@@ -42,6 +44,12 @@ const styles = (theme) => ({
     },
     submit:{
         marginTop:theme.spacing.unit * 3
+    },
+    margin: {
+        marginTop:theme.spacing.unit,
+        marginLeft: theme.spacing.unit * 20,
+        //marginRight: theme.spacing.unit * 3,
+        marginButton: theme.spacing.unit * 10,
     }
 })
 
@@ -49,7 +57,8 @@ class AddRoom extends React.Component {
 
     state = { 
         name: '',
-        status: null,
+        status: true,
+        rooms: [],
      }
 
      handleInput = (e) => {
@@ -61,6 +70,23 @@ class AddRoom extends React.Component {
          console.log(this.state.name)
          console.log(this.state.status)
          e.preventDefault();
+     }
+
+     onSubmit = (e) => {
+        e.preventDefault();
+
+            // Take all the data in the form
+             let name = this.state.name
+             let status = this.state.status
+
+             console.log(name)
+             console.log(status)
+        // Use Axios to post to the server and retrieve the data
+         API.post(`/admin/add/room`, { 'room': name, 'status': status}).then( res => {
+            this.setState({ rooms:res.data })
+            //console.log(this.state.users)
+            this.props.history.push('/adminHomepage')
+         }) 
      }
 
     render() { 
@@ -89,6 +115,9 @@ class AddRoom extends React.Component {
                         </Select>
                     </FormControl>  
                 </CardContent>
+                <CardActionArea>
+                    <Button onClick={this.onSubmit} variant="contained" color="secondary" className={classes.margin}> Submit </Button>
+                </CardActionArea>
             </form>
         </Card>
 

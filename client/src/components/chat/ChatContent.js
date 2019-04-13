@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import '../../styles/Styles.css'
 import { Input } from '@material-ui/core';
 import io  from 'socket.io-client';
+import API from '../Lists/api'
 
 class ChatContent extends Component {
-
     constructor(props) {
       super(props)
       this.socket = io.connect('http://localhost:4000')
@@ -12,9 +12,10 @@ class ChatContent extends Component {
     
     // Set the url in the state
     state = { 
-        room:'',
+        roomname:'',
         message:'',
         username:'',
+        rooms: [],
     }
 
     //this.socket.on()
@@ -47,29 +48,36 @@ class ChatContent extends Component {
         //         }
         //       }
         //   }
-        console.log(data)
+        //console.log(data)
           });
-    }
+          API.get(`/get/all/room`).then( res => {
+            const room = res.data;
+            //this.state.rooms.push(room)
+            this.setState( { rooms:room })
+          })
+
+          
+
+        }
 
     componentWillMount(){
-    
-    }
+            }
 
     // Take the value of the room when select
     handleRoomInput = (e) => {
-        this.setState({room: e.target.value})
+        this.setState({roomname: e.target.value})
         // console.log(this.state.room)
         // When new user join the room
         let username = this.state.username;
         var date = new Date().getTime()   
          // when new user joint the group
-        var h_rooms = this.state.room;
+        var h_rooms = this.state.roomname;
         if (h_rooms !== "" && username !== ""){
             this.socket.emit('join', {
             name:username,
             message:`${username} is connected`,
             date: date,
-            room: this.state.room,
+            room: this.state.roomname,
         })
     }
 }
@@ -92,8 +100,8 @@ class ChatContent extends Component {
 
     componentDidUpdate(){
         console.log(this.state.room)
-        console.log(this.state.username)
-        console.log(this.state.message)
+        //console.log(this.state.username)
+        //console.log(this.state.message)
     }
 
 
@@ -106,19 +114,14 @@ class ChatContent extends Component {
                         <h5 className="text-left">
                             chat Application
                         </h5>
-                    
                         <div id="status"></div>
+                        <select id="roomname" className="form-control" required>
+                            <option>Please Select</option>
+                            {this.state.rooms.map(row => (
+                                <option key={row._id} value={row.date_created}> { row.date_created } </option>
+                            ))}
+                        </select>
                         
-                    <select id="roomname" className="form-control" onChange={this.handleRoomInput} required>
-                        <option> Please Select a Room </option>
-                        <option value="node">Node</option>
-                        <option value="react">React</option>
-                        <option value="angular">Angular</option>
-                        <option value="java">Java group Chat</option>
-                        <option value="typescript">TypeScript</option>            
-                    
-                    </select>
-
                         <div id="chat">
                             <Input type="text" className="form-control" placeholder="Enter your name...." onKeyDown={ this.handleUsernameInput} />
                             <br/> <br/>        
@@ -130,6 +133,15 @@ class ChatContent extends Component {
                         <textarea id="textarea" className="form-control"  placeholder="Enter message" onKeyDown={this.handleMessageInput}></textarea>
                     </div>
                 </div>
+            </div>
+
+            <div>
+                {this.state.rooms.map(row => (
+                    <ul key={row._id}>
+                        <li> {row.room} </li>
+                        <li> Here</li>
+                    </ul>
+                ))}
             </div>
         </div>
     );

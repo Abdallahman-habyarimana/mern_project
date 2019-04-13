@@ -7,7 +7,7 @@ import AdminLogin from './components/Layout/AdminLogin';
 import ChatContent from './components/chat/ChatContent';
 import Pagination from './components/helper/Pagination';
 import AdminHomepage from './components/Layout/AdminHomepage'
-
+import AddRoom from './components/Layout/AddRoom'
 //import Main from './components/Navigation/Main';
 //import Footer from './components/Layout/Footer' 
 
@@ -26,6 +26,7 @@ class App extends Component {
             <Route path="/adminlogin" component={AdminLogin}/>       
             <Route path="/pagination" component={Pagination}/>
             <Route path="/adminHomepage" component={AdminHomepage}/>
+            <Route path="/addRoom" component={AddRoom}/>
             
         </Switch>
       </BrowserRouter>

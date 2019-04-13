@@ -8,6 +8,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import { Button } from '@material-ui/core';
 //import TablePagination from '@material-ui/core/TablePagination'
 //import TableSortTable from '@material-ui/core/TableSortLabel'
 
@@ -32,7 +33,7 @@ class Rooms extends Component{
 
      componentDidMount(){
         API
-        .get(`eventlog`)
+        .get(`/get/all/room`)
         .then( res => {
             const chat = res.data;
             this.setState( { chat })
@@ -40,9 +41,15 @@ class Rooms extends Component{
         console.log( this.state.chat )
      }
 
+     onEdit = (row) => {
+         if (row) console.log(row)
+     }
+
      createSortHandler = property => event => {
         this.props.onRequestSort(event, property);
       };
+
+
     render() { 
         const { classes } = this.props
         // const { onSelectAllClick, order, orderBy, numSelected, rowCount } = this.props;
@@ -53,20 +60,22 @@ class Rooms extends Component{
                 <TableHead>
                     <TableRow>
                         <TableCell align="right" >Type</TableCell>
-                        <TableCell align="right">Date</TableCell>
-                        <TableCell align="right"> Time</TableCell>
-                        <TableCell align="right">PPID</TableCell>
+                        <TableCell align="right">Date Created</TableCell>
+                        <TableCell align="right">Date Edit</TableCell>
+                        <TableCell align="right">Status</TableCell>
+                        <TableCell align="right"> Actions </TableCell>
                     </TableRow>
                </TableHead>
                <TableBody>
                     {this.state.chat.map(row => (
                     <TableRow key={row._id}>
                         <TableCell component="th" scope="row">
-                            {row.type}
+                            {row.room}
                         </TableCell>
-                        <TableCell align="right">{new Date(row.date).toLocaleDateString("en-US")}</TableCell>
-                        <TableCell align="right">{new Date(row.time).toLocaleTimeString("en-US")}</TableCell>
-                        <TableCell align="right">{row.ppid}</TableCell>
+                        <TableCell align="right">{new Date(row.date_created).toLocaleDateString("en-US")}</TableCell>
+                        <TableCell align="right">{new Date(row.edit_date).toLocaleTimeString("en-US")}</TableCell>
+                        <TableCell align="right">{ (row.status) ? 'Activated' : 'Deactivated' }</TableCell>
+                        <TableCell align="right"><Button onClick={ () => { this.onEdit(row)}}> Edit</Button></TableCell>
                     </TableRow>
                 ))}
                 </TableBody>

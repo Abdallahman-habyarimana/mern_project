@@ -5,6 +5,7 @@ import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
+import { Button } from '@material-ui/core';
 
 // import Test from '../Lists/test'
 import  Events  from '../Lists/Events'
@@ -28,6 +29,18 @@ const styles = theme => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
   },
+  button: {
+    marginLeft: theme.spacing.unit * 95,
+    backgroundColor: 'darkseagreen',
+    color: 'white'
+    //marginRight: theme.spacing.unit * 3,
+  }, 
+  appbar: {
+    backgroundColor: 'skyblue'
+  },
+  tabs: {
+    backgroundColor: 'gainsboro'
+  }
 });
 
 class AdminHomepage extends Component {
@@ -44,11 +57,12 @@ class AdminHomepage extends Component {
     const {value} = this.state
     return(
       <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.appbar}>
         <Tabs value={value} onChange={this.handleChange}>
           <Tab label="Events" />
           <Tab label="Chat History" />
           <Tab label="Rooms" />
+          <Button className={classes.button} onClick={ () => { this.props.history.push('/addRoom')}}> Add Room </Button>
         </Tabs>
       </AppBar>
       {value === 0 && <TabContainer><Events/></TabContainer>}
