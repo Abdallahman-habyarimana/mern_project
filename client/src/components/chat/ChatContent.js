@@ -50,6 +50,7 @@ class ChatContent extends Component {
         //   }
         //console.log(data)
           });
+
           API.get(`/get/all/room`).then( res => {
             const room = res.data;
             //this.state.rooms.push(room)
@@ -59,9 +60,6 @@ class ChatContent extends Component {
           
 
         }
-
-    componentWillMount(){
-            }
 
     // Take the value of the room when select
     handleRoomInput = (e) => {
@@ -118,7 +116,7 @@ class ChatContent extends Component {
                         <select id="roomname" className="form-control" required>
                             <option>Please Select</option>
                             {this.state.rooms.map(row => (
-                                <option key={row._id} value={row.date_created}> { row.date_created } </option>
+                                <option key={row._id} value={row.room}> { row.room } </option>
                             ))}
                         </select>
                         
@@ -136,12 +134,7 @@ class ChatContent extends Component {
             </div>
 
             <div>
-                {this.state.rooms.map(row => (
-                    <ul key={row._id}>
-                        <li> {row.room} </li>
-                        <li> Here</li>
-                    </ul>
-                ))}
+              
             </div>
         </div>
     );
