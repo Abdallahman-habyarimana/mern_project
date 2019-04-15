@@ -9,6 +9,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import { Button } from '@material-ui/core';
+import { withRouter } from 'react-router-dom'
 //import TablePagination from '@material-ui/core/TablePagination'
 //import TableSortTable from '@material-ui/core/TableSortLabel'
 
@@ -42,7 +43,7 @@ class Rooms extends Component{
      }
 
      onEdit = (row) => {
-         if (row) console.log(row)
+        this.props.history.push('/editRoom/'+ row._id)
      }
 
      createSortHandler = property => event => {
@@ -75,7 +76,7 @@ class Rooms extends Component{
                         <TableCell align="right">{new Date(row.date_created).toLocaleDateString("en-US")}</TableCell>
                         <TableCell align="right">{new Date(row.edit_date).toLocaleTimeString("en-US")}</TableCell>
                         <TableCell align="right">{ (row.status) ? 'Activated' : 'Deactivated' }</TableCell>
-                        <TableCell align="right"><Button onClick={ () => { this.onEdit(row)}}> Edit</Button></TableCell>
+                        <TableCell align="right"><Button onClick={ () => this.onEdit(row) }> Edit</Button></TableCell>
                     </TableRow>
                 ))}
                 </TableBody>
@@ -85,7 +86,13 @@ class Rooms extends Component{
 }
 
 Rooms.propTypes = {
-    classes: PropTypes.object.isRequired,
-    };
+    classes: PropTypes.object.isRequired
+}
+
+Rooms = withRouter(Rooms)
+
+// Rooms.propTypes = {
+//     classes: PropTypes.object.isRequired,
+//     };
  
 export default withStyles(styles)(Rooms);

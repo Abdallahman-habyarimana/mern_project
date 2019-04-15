@@ -26,6 +26,16 @@ router.get('/get/all/room', (req, res) => {
     })
 })
 
+//get all all room lcohost:300/api/histor
+router.get('/get/room/:id', (req, res) => {
+    Rooms.find({ _id: req.params.id},(err, docs) => {
+        if (!err) { res.send(docs);}
+        else { console.log('Error in Retrieving:' + JSON.stringify(err, undefined, 2));
+    }
+    })
+})
+
+
 
 // get all Event
 router.get('/eventlog', (req, res) => {
