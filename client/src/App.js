@@ -22,6 +22,7 @@ class App extends Component {
         <Navigation />
         <Switch>
             <Route exact path="/" component={ChatContent} />
+            <Route exact path="/chat" component={ChatContent} />
             <Route path="/events" component={Events} />
             <Route path="/history" component={ChatHistory} />
             <Route path="/adminlogin" component={AdminLogin}/>       

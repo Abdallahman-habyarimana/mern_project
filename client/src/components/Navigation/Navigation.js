@@ -35,7 +35,7 @@ class Navigation extends React.Component {
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" color="inherit" className={classes.grow}>
-             <Link className="brand-logo" to="/"> Chat Application </Link>
+             <Link to="/chat" className="brand-logo" > Chat Application </Link>
           </Typography>
               <Button type="button" onClick={()=> this.props.history.push("/adminlogin")} className="btn btn-primary btn-sm primary">Admin Login</Button>       
         </Toolbar>

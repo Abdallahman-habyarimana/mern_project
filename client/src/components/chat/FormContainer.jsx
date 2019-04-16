@@ -25,7 +25,7 @@ class FormContainer extends Component {
                 <div className="row">
                     <div className="col-md-6 offset-md-3 col-sm-12">
                         <h5 className="text-left">
-                            chat Application
+                            Chat Application
                         </h5>
                     
                         <div id="status"></div>

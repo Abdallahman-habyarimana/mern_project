@@ -13,7 +13,7 @@ class Footer extends Component {
                     
                 </div>
                     <div className="footer-copyright text-center py-3">© 2019 Copyright:
-                        <a href="http://www.abdallahmanh.com" target="_blank"> Abdallahman Habyarimana</a> <a href="https://rvm-portfolio.herokuapp.com/home" target="_blank"> & Renata Moura</a>
+                        <a href="http://www.abdallahmanh.com"rel="noopener noreferrer"  target="_blank"> Abdallahman Habyarimana & </a> <a href="https://rvm-portfolio.herokuapp.com/home" rel="noopener noreferrer" target="_blank"> Renata Moura</a>
                     </div>
                 </div>
 
