@@ -82,6 +82,14 @@ router.post('/admin/add/room', (req, res) => {
     .catch(err => res.status(400).json({ error: err })) 
 })
 
+router.put('/admin/edit/room/:id', (req, res) => {
+    let id = req.params.id
+    Rooms.findByIdAndUpdate( { _id: id}, req.body, (err, doc) => {
+        if(err) res.status(404).send({ error: err});
+        else res.send(doc);
+    })
+})
+
 router.post('/admin/login/:name&:pass', (req, res) => {
     Admin.where('username').equals(req.params.name).where('password').equals(req.params.pass).exec((err, doc)=> {
         if(!err) { 

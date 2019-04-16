@@ -91,11 +91,10 @@ class EditRoom extends React.Component {
             // Take all the data in the form
              let name = this.state.name
              let status = this.state.status
+             var id = this.props.match.params
 
-             console.log(name)
-             console.log(status)
         // Use Axios to post to the server and retrieve the data
-         API.post(`/admin/add/room`, { 'room': name, 'status': status}).then( res => {
+         API.put(`/admin/edit/room/${id.rowId}`, { 'room': name, 'edit_date':Date.now(), 'status': status}).then( res => {
             this.setState({ rooms:res.data })
             //console.log(this.state.users)
             this.props.history.push('/adminHomepage')

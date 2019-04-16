@@ -63,14 +63,14 @@ class AdminHomepage extends Component {
           <Tab label="Events" />
           <Tab label="Chat History" />
           <Tab label="Rooms" />
-          <Tab  label = "Add Rooms" />
-          {/* <Button className={classes.button} onClick={ () => { this.props.history.push('/addRoom')}}> Add Room </Button> */}
+          {/* <Tab  label = "Add Rooms" /> */}
+          <Button className={classes.button} onClick={ () => { this.props.history.push('/addRoom')}}> Add Room </Button>
         </Tabs>
       </AppBar>
       {value === 0 && <TabContainer><Events/></TabContainer>}
       {value === 1 && <TabContainer><ChatHistory/></TabContainer>}
       {value === 2 && <TabContainer><Rooms /></TabContainer>}
-      {value === 3 && <TabContainer> <AddRoom /> </TabContainer>}
+      {/* {value === 3 && <TabContainer> <AddRoom /> </TabContainer>} */}
     </div>
   );
 }
