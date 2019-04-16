@@ -15,7 +15,7 @@ class Main extends Component {
                     <div className="collapse navbar-collapse" id="navbarText">
                         <List className="navbar-nav mr-auto">
                             <ListItem className="nav-item active">
-                                <Link className="nav-link" to="/"> Chat History </Link>
+                                <Link className="nav-link" to="/chat"> Chat History </Link>
                             </ListItem>
                             <ListItem className="nav-item">
                                 <Link className="nav-link" to="/events">Events</Link>

@@ -46,7 +46,7 @@ class ChatHistory extends Component {
                     <TableRow>
                         <TableCell align="right">Sender</TableCell>
                         <TableCell align="right">Message</TableCell>
-                        <TableCell align="right"> Room</TableCell>
+                        <TableCell align="right">Room</TableCell>
                         <TableCell align="right">Date</TableCell>
                     </TableRow>
                </TableHead>

@@ -52,9 +52,9 @@ class Events extends Component {
             <Table className={classes.table}>
                 <TableHead>
                     <TableRow>
-                        <TableCell align="right" >Type</TableCell>
+                        <TableCell align="right">Type</TableCell>
                         <TableCell align="right">Date</TableCell>
-                        <TableCell align="right"> Time</TableCell>
+                        <TableCell align="right">Time</TableCell>
                         <TableCell align="right">PPID</TableCell>
                     </TableRow>
                </TableHead>
