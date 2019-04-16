@@ -3,7 +3,7 @@ import '../../styles/Styles.css'
 import { Input } from '@material-ui/core';
 import io  from 'socket.io-client';
 import API from '../Lists/api'
-
+import Footer from '../Layout/Footer'
 class ChatContent extends Component {
     constructor(props) {
       super(props)
@@ -110,7 +110,7 @@ class ChatContent extends Component {
                 <div className="row">
                     <div className="col-md-6 offset-md-3 col-sm-12">
                         <h5 className="text-left">
-                            chat Application
+                            Chat Application
                         </h5>
                         <div id="status"></div>
                         <select id="roomname" className="form-control" required>
@@ -134,7 +134,7 @@ class ChatContent extends Component {
             </div>
 
             <div>
-              
+              <Footer/>
             </div>
         </div>
     );
