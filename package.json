@@ -4,8 +4,8 @@
   "description": "Chat Room Application",
   "main": "server.js",
   "scripts": {
-    "client": "cd client & npm start",
-    "server": "nodemon server.js",
+    "client" : "cd client && npm start",
+    "server": "node server.js",
     "start": "concurrently \" npm run server \" \" npm run client \""
   },
   "repository": {
