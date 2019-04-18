@@ -4,9 +4,9 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path')
 // import the router from apiController
-var apiController = require('./routes/apiController');
+var apiController = require('./backend/routes/apiController');
 // import the connection from the database
-const { mongoose } = require('./config/index')
+const { mongoose } = require('./backend/config/index')
 // declare the express variable
 var app = express();
 // set the express use the body parse
