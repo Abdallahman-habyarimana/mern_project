@@ -20,7 +20,7 @@ app.get('/',(req, res) => {
     res.send('Server at port:' + PORT)
 })
 // serve static files from the Public 
-//app.use(express.static(path.join(__dirname, '/public/src/')))
+app.use(express.static(path.join(__dirname, '/client/build/')))
 // set the express to listen to the server
 app.listen(PORT, () => console.log('Server started at port :' + PORT));
 // set the express api to listen when is http:localhost:3000/api
@@ -28,5 +28,5 @@ app.listen(PORT, () => console.log('Server started at port :' + PORT));
 app.use('/api', apiController);
 // anything that doesn't match the above, send back index.html
 app.get('*', (req, res) => {
-   res.sendFile(__dirname + '/public/src/' + 'index.html')
+   res.sendFile(__dirname + '/client/build/' + 'index.html')
 })
