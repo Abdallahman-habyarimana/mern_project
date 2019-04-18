@@ -16,9 +16,9 @@ app.use(cors());
 // heruko port 
 const PORT = process.env.PORT || 5050
 // when the url is http://localhost:3000 print the message below 
-app.get('/',(req, res) => {
-    res.sendFile(__dirname + '/client/public/' + 'index.html')
-})
+// app.get('/',(req, res) => {
+//     res.sendFile()
+// })
 // serve static files from the Public 
 app.use(express.static(path.join(__dirname, '/client/build/')))
 // set the express to listen to the server
