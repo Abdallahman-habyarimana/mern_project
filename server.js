@@ -17,8 +17,7 @@ app.use(cors());
 const PORT = process.env.PORT || 5050
 // when the url is http://localhost:3000 print the message below 
 app.get('/',(req, res) => {
-    // res.send('Server at port:' + PORT)
-    res.sendFile(__dirname + '/client/build/' + 'index.html')
+    res.sendFile(__dirname + '/client/public/' + 'index.html')
 })
 // serve static files from the Public 
 app.use(express.static(path.join(__dirname, '/client/build/')))
